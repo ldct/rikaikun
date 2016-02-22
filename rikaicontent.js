@@ -805,6 +805,11 @@ var rcxContent = {
 	
 	onMouseMove: function(ev) { rcxContent._onMouseMove(ev); },
 	_onMouseMove: function(ev) {
+		if (window.rikaichan.config.showonshiftkeydown === 'true' && !ev.shiftKey) {
+          rcxContent.clearHi();
+          rcxContent.hidePopup();
+          return;
+        }
 		var fake;
 		// Put this in a try catch so that an exception here doesn't prevent editing due to div.
 		try {
@@ -937,7 +942,7 @@ var rcxContent = {
 		this.uofsNext = 1;
 
 		if ((rp) && (rp.data) && (ro < rp.data.length)) {
-			this.forceKanji = ev.shiftKey ? 1 : 0;
+			this.forceKanji = ev.shiftKey && !window.rikaichan.config.showonshiftkeydown ? 1 : 0;
 			tdata.popX = ev.clientX;
 			tdata.popY = ev.clientY;
 			tdata.timer = setTimeout(
