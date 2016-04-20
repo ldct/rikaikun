@@ -80,6 +80,7 @@ if(initStorage("v0.8.9", true)) {
 	initStorage("minihelp", "true");
 	initStorage("disablekeys", "false");
 	initStorage("kanjicomponents", "true");
+	initStorage("showonshiftkeydown", "true");
 
 	for (i = 0; i*2 < rcxDict.prototype.numList.length; i++) {
 		initStorage(rcxDict.prototype.numList[i*2], "true")
@@ -115,6 +116,7 @@ rcxMain.config.lineEnding = localStorage["lineEnding"];
 rcxMain.config.minihelp = localStorage["minihelp"];
 rcxMain.config.disablekeys = localStorage["disablekeys"];
 rcxMain.config.kanjicomponents = localStorage["kanjicomponents"];
+rcxMain.config.showonshiftkeydown = localStorage["showonshiftkeydown"];
 rcxMain.config.kanjiinfo = new Array(rcxDict.prototype.numList.length/2);
 for (i = 0; i*2 < rcxDict.prototype.numList.length; i++) {
 	rcxMain.config.kanjiinfo[i] = localStorage[rcxDict.prototype.numList[i*2]];

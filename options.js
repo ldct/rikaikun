@@ -37,6 +37,11 @@ function fillVals() {
 	else
 		document.optform.kanjicomponents.checked = false;
 
+	if (localStorage['showonshiftkeydown'] == 'true')
+		document.optform.showonshiftkeydown.checked = true;
+	else
+		document.optform.showonshiftkeydown.checked = false;
+
 	numList = chrome.extension.getBackgroundPage().rcxDict.prototype.numList;
 
 	for (i = 0; i*2 < numList.length; i++) {
@@ -71,6 +76,7 @@ function getVals() {
 	localStorage['minihelp'] = document.optform.minihelp.checked;
 	localStorage['disablekeys'] = document.optform.disablekeys.checked;
 	localStorage['kanjicomponents'] = document.optform.kanjicomponents.checked;
+	localStorage['showonshiftkeydown'] = document.optform.showonshiftkeydown.checked;
 
 	var kanjiinfoarray = new Array(chrome.extension.getBackgroundPage().rcxDict.prototype.numList.length/2);
 	numList = chrome.extension.getBackgroundPage().rcxDict.prototype.numList;
@@ -95,6 +101,7 @@ function getVals() {
 	chrome.extension.getBackgroundPage().rcxMain.config.lineEnding = localStorage["lineEnding"];
 	chrome.extension.getBackgroundPage().rcxMain.config.copySeparator = localStorage["copySeparator"];
 	chrome.extension.getBackgroundPage().rcxMain.config.maxClipCopyEntries = localStorage["maxClipCopyEntries"];
+	chrome.extension.getBackgroundPage().rcxMain.config.showonshiftkeydown = localStorage["showonshiftkeydown"];
 
 }
 window.onload = fillVals;
